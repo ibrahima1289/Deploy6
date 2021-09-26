@@ -1,10 +1,11 @@
    
 pipeline {
-  agent {
-      label 'agent1'
-  }
+  agent none
   stages {
     stage ('Build') {
+       agent {
+          label 'agent1'
+       }
       steps {
       sh 'rm -rf ./cypress2'
       sh '''
