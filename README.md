@@ -11,6 +11,10 @@ Configure the Security Groups (SG):
 For the inbound rule: open port 22, and 8080<br>
 For the outbound rule: open all ports.
 
+SSH into the **master**:
+
+![](/images/Deploy6_ssh1.PNG)
+
 Intalling **Jenkins** in an EC2 using bash script
 
 ```
@@ -38,12 +42,17 @@ Here is the bash script to find the admin password:
 
 Now, install these plugins in **Jenkins**: NodeJs, EC2 plugins, and Maven.
 
+Create the agents: you can find how to create agents in the [documentation](https://github.com/kura-labs-org/DEPLOY5_AWS/blob/main/Deployment%235.pdf) of the deployment 5.
+
 **1.2** The second EC2 is the first agent (Ubuntu OS)
 
 Configure the Security Groups (SG):
 
 For the inbound rule: open port 22, and 5000<br>
 For the outbound rule: open all ports.
+SHH into the first agent:
+
+![](/images/Deploy6_ssh1.PNG)
 
 Install requirements for Ubuntu EC2 - also called **agent 1** using bash script.
 
@@ -61,6 +70,10 @@ Install requirements for Ubuntu EC2 - also called **agent 1** using bash script.
 
 For the inbound rule: open port 22<br>
 For the outbound rule: open all ports.
+
+SHH into the first agent:
+
+![](/images/Deploy6_ssh1.PNG)
 
 Requirements for Ubuntu EC2 - also called **agent 2** using bash script..
 
@@ -88,38 +101,122 @@ Requirements for Ubuntu EC2 - also called **agent 2** using bash script..
 
 Now, you will see on your **Jenkins** console all three EC2s connected as shown below.
 
+![](/images/Deplo6_1.PNG)
 
-2. Fork repo
-create new repo
-jenkinsfile
+## 2. Fork the [repository](https://github.com/kura-labs-org/DEPLOY6_FE) where the codes are.
 
-3. Find and upload the video and screenshot files.
+**2.1** Create a new repository (I named it [Deploy6](https://github.com/ibrahima1289/Deploy6))
 
+Remove `PDF`, and `README` files.
+
+**2.2** Create the **[Jenkinsfile](https://github.com/ibrahima1289/Deploy6/blob/main/Jenkinsfile)**.
+
+*I placed all the files and folders from the original [repository](https://github.com/kura-labs-org/DEPLOY6_FE) in the root directory to avoid errors.*
+
+**2.3** Create a job in **Jenkins** and build it.<br>
+Here is the result:
+
+![](/images/Deploy6_1.PNG)
+
+**2.4** Make a failed test.
+
+For this, we will alter the result `My Awesome Web Application` into `Awesome Web Application` for the heading.<br>
+
+Here is the result:
+
+![](/images/Deploy6_4.PNG)
+
+After we fix it again, the buid is successfull.
+
+![](/images/Deploy6_5.PNG)
+
+## 3. Find and upload the video and screenshot files.
+
+We will follow the procedure below:
+
+**Step 1**: First, locate the video and screenshot files.
+
+```
 $ find /home -name *.mp4
+```
+![](/images/Deploy6_8.PNG)
+
+**Step 2**: Move the files into the folder Deploy6.
+
+```
 $ cd /home/ubuntu/jenkins/workspace/Jk-Pipeline_main/cypress
-$ ls
-$ mv videos screenshots ~
+$ mv videos screenshots videos 
+$ cd ~/Deploy6
+```
+![](/images/Deploy6_ssh5.PNG)
+
+**Step 3**: SSH into Github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6) from agent 2.<br>
+For this, follow these instructions.
+
+Generate a ssh key for the agent.
+
+```
 $ cd ~
 $ ssh-keygen
 $ ls
 $ cat deploy6.pub
-Now go to github acc > settings > SSH and GPG keys > New SSH key
-paste public key (deploy6.pub)
-click add SSH key
-Go back to the terminal 
-type the commands below to ssh into the github
+```
+![](/images/Deploy6_ssh8.PNG)
+
+Now, go to your github account > `settings` > `SSH and GPG keys` > `New SSH key`
+
+Copy and paste public key (deploy6.pub)
+
+Click > `Add SSH key`
+
+![](/images/Deploy6_6.PNG)
+
+Go back to the terminal, type the commands below to ssh into the github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
+
+```
 $ eval `ssh-agent -s`
 $ ssh-add deploy6
+```
 
-you should see “ssh3 pic”
-Clone github account repo (go to the repo and copy the url)
+![](/images/Deploy6_ssh3.PNG)
+
+Clone github account [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
+
+Go to the [repo](https://github.com/ibrahima1289/Deploy6) and copy the **URL** where the repo is located.<br>
+You can also do this by copying the SSH link shown in the picture below.
+
+![](/images/Deploy6_10.PNG)
+
+```
 $ git clone git@github.com:ibrahima1289/Deploy6.git
-ls
-cd into new folder created Deploy6
-ssh5 pic
-Now, upload the video and screenshot found in Deploy6 into the github repo deploy6.
+$ ls
+```
+
+cd into new folder Deploy6
+
+![](/images/Deploy6_ssh5.PNG)
+
+Now, upload the video and screenshot found in Deploy6 into the github repository [Deploy6](https://github.com/ibrahima1289/Deploy6).<br>
+Follow the command below.
+
+```
 $ git add .
 $ git commit -m "adding videos and scrennshots to repo"
 $ git pull
 $ git push origin main
+```
+
+![](/images/Deploy6_ssh6.PNG)
+![](/images/Deploy6_ssh7.PNG)
+
+
+
+## Troubleshooting:
+
+Before I was able to continue this deployment, I had many failing builds at the test phase of the pipeline. With my co-workers ([Sai](https://github.com/SaiHoYip) and [Ricardo](https://github.com/Deodutt), I was able to identify that in the Jenkinsfile, I needed to update the first agent ( wich I had `agent any` instead of what is in the picture below.
+
+![](/images/Deploy6_11.PNG)
+
+
+
 
