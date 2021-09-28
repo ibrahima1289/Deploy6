@@ -5,6 +5,10 @@ describe('Heading', () => {
         cy.get('h1')
             .invoke('text')
             .should("equal", "My Awesome Web Application")
+        Cypress.Screenshot.defaults({ capture: 'fullPage' });
+        cy.screenshot();
+
     });
 
 });
+
