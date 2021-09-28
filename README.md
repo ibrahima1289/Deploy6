@@ -193,9 +193,6 @@ $ ls
 
 ![](/images/Deplo6_ssh4.PNG)
 
-cd into new folder Deploy6
-
-![](/images/Deplo6_ssh5.PNG)
 
 Now, upload the video and screenshot found in Deploy6 into the github repository [Deploy6](https://github.com/ibrahima1289/Deploy6).<br>
 Follow the command below.
