@@ -13,7 +13,7 @@ For the outbound rule: open all ports.
 
 SSH into the **master**:
 
-![](/images/Deploy6_ssh1.PNG)
+![](/images/Deplo6_ssh1.PNG)
 
 Intalling **Jenkins** in an EC2 using bash script
 
@@ -50,9 +50,10 @@ Configure the Security Groups (SG):
 
 For the inbound rule: open port 22, and 5000<br>
 For the outbound rule: open all ports.
+
 SHH into the first agent:
 
-![](/images/Deploy6_ssh1.PNG)
+![](/images/Deplo6_ssh2.PNG)
 
 Install requirements for Ubuntu EC2 - also called **agent 1** using bash script.
 
@@ -71,9 +72,7 @@ Install requirements for Ubuntu EC2 - also called **agent 1** using bash script.
 For the inbound rule: open port 22<br>
 For the outbound rule: open all ports.
 
-SHH into the first agent:
-
-![](/images/Deploy6_ssh1.PNG)
+SHH into the second agent (same method as agent 1):
 
 Requirements for Ubuntu EC2 - also called **agent 2** using bash script..
 
@@ -148,7 +147,7 @@ $ cd /home/ubuntu/jenkins/workspace/Jk-Pipeline_main/cypress
 $ mv videos screenshots videos 
 $ cd ~/Deploy6
 ```
-![](/images/Deploy6_ssh5.PNG)
+![](/images/Deplo6_ssh5.PNG)
 
 **Step 3**: SSH into Github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6) from agent 2.<br>
 For this, follow these instructions.
@@ -169,7 +168,7 @@ Copy and paste public key (deploy6.pub)
 
 Click > `Add SSH key`
 
-![](/images/Deploy6_6.PNG)
+![](/images/Deplo6_6.PNG)
 
 Go back to the terminal, type the commands below to ssh into the github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
 
@@ -178,7 +177,7 @@ $ eval `ssh-agent -s`
 $ ssh-add deploy6
 ```
 
-![](/images/Deploy6_ssh3.PNG)
+![](/images/Deplo6_ssh3.PNG)
 
 Clone github account [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
 
@@ -194,7 +193,7 @@ $ ls
 
 cd into new folder Deploy6
 
-![](/images/Deploy6_ssh5.PNG)
+![](/images/Deplo6_ssh5.PNG)
 
 Now, upload the video and screenshot found in Deploy6 into the github repository [Deploy6](https://github.com/ibrahima1289/Deploy6).<br>
 Follow the command below.
@@ -206,8 +205,8 @@ $ git pull
 $ git push origin main
 ```
 
-![](/images/Deploy6_ssh6.PNG)
-![](/images/Deploy6_ssh7.PNG)
+![](/images/Deplo6_ssh6.PNG)
+![](/images/Deplo6_ssh7.PNG)
 
 
 
