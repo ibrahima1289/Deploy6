@@ -149,7 +149,7 @@ $ cd ~/Deploy6
 ```
 ![](/images/Deplo6_ssh5.PNG)
 
-**Step 3**: SSH into Github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6) from agent 2.<br>
+**Step 3**: SSH into Github [repository](https://github.com/ibrahima1289/Deploy6) from agent 2.<br>
 For this, follow these instructions.
 
 Generate a ssh key for the agent.
@@ -170,7 +170,7 @@ Click > `Add SSH key`
 
 ![](/images/Deplo6_6.PNG)
 
-Go back to the terminal, type the commands below to ssh into the github [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
+Go back to the terminal, type the commands below to ssh into the github [repository](https://github.com/ibrahima1289/Deploy6).
 
 ```
 $ eval `ssh-agent -s`
@@ -179,7 +179,7 @@ $ ssh-add deploy6
 
 ![](/images/Deplo6_ssh3.PNG)
 
-Clone github account [repository (Deploy6)](https://github.com/ibrahima1289/Deploy6).
+Clone github account [repository](https://github.com/ibrahima1289/Deploy6).
 
 Go to the [repo](https://github.com/ibrahima1289/Deploy6) and copy the **URL** where the repo is located.<br>
 You can also do this by copying the SSH link shown in the picture below.
@@ -190,6 +190,8 @@ You can also do this by copying the SSH link shown in the picture below.
 $ git clone git@github.com:ibrahima1289/Deploy6.git
 $ ls
 ```
+
+![](/images/Deplo6_ssh4.PNG)
 
 cd into new folder Deploy6
 
